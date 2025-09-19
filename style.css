@@ -1,0 +1,158 @@
+/* Ganti 'NamaFontAnda' dengan nama font yang Anda siapkan di folder /fonts */
+@font-face {
+    font-family: 'vibes';
+    src: url('fonts/Vermin Vibes 1989.ttf') format('ttf); /* Ganti nama file font jika perlu */
+}
+
+:root {
+    --gradient-color-1: #8A2BE2; /* Biru Ungu */
+    --gradient-color-2: #4169E1; /* Biru Royal */
+    --gradient-color-3: #00FFFF; /* Cyan Aqua */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'NamaFontAnda', sans-serif; /* Menggunakan font kustom Anda */
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Mencegah scroll */
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.menu-icon .line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+/* --- Konten Utama & Logo Tengah --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-logo {
+    font-size: 6vw; /* Ukuran font responsif */
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    
+    /* Efek Gradien Animasi */
+    background: linear-gradient(90deg, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3), var(--gradient-color-1));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: moveGradient 5s linear infinite;
+
+    /* Efek Glow */
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5), 0 0 20px rgba(65, 105, 225, 0.5);
+}
+
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* --- Footer & Input Area --- */
+.chat-footer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50px; /* Sangat rounded */
+    position: relative;
+    background-color: #1a1a1a; /* Warna fallback jika border gradien tidak terlihat */
+    margin-bottom: 15px;
+}
+
+/* Membuat Border Gradien Animasi */
+.input-container::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px;
+    right: -2px; bottom: -2px;
+    background: linear-gradient(90deg, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3), var(--gradient-color-1));
+    background-size: 300% 100%;
+    border-radius: 52px; /* Sedikit lebih besar dari container */
+    z-index: -1;
+    animation: moveGradient 4s linear infinite;
+}
+
+#chat-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+    font-family: 'NamaFontAnda', sans-serif;
+}
+
+#chat-input::placeholder {
+    color: #888;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    color: white;
+}
+
+.plus-icon {
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+.copyright {
+    color: #777;
+    font-size: 14px;
+}
